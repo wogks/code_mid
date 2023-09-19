@@ -1,8 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 import 'dart:io';
 
 import 'package:codefac_mid/common/component/custom_text_form_field.dart';
 import 'package:codefac_mid/common/const/colors.dart';
+import 'package:codefac_mid/common/const/data.dart';
 import 'package:codefac_mid/common/layout/default_layout.dart';
 import 'package:codefac_mid/common/view/root_tab.dart';
 import 'package:dio/dio.dart';
@@ -21,7 +24,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final dio = Dio();
-
     const emulatorIp = '10.0.2.2:3000';
     const simulatorIp = '127.0.0.1:3000';
 
@@ -75,10 +77,17 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                       ),
                     );
+                    final refreshToken = resp.data['refreshToken'];
+                    final accessToken = resp.data['accessToken'];
+                    await storage.write(
+                        key: REFRESH_TOKEN_KEY, value: refreshToken);
+                    await storage.write(
+                        key: ACCESS_TOKEN_KEY, value: accessToken);
+
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const RootTav(),
+                        builder: (context) => const RootTab(),
                       ),
                     );
                   },
