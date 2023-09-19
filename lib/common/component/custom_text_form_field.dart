@@ -6,7 +6,7 @@ class CustomTextFormField extends StatelessWidget {
   final String? errorText;
   final bool obscureText;
   final bool autofocus;
-  final ValueChanged<String?> onChanged;
+  final ValueChanged<String> onChanged;
   const CustomTextFormField({
     super.key,
     this.hintText,
