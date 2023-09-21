@@ -1,4 +1,3 @@
-import 'package:codefac_mid/user/view/login_screen.dart';
 import 'package:codefac_mid/user/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 
