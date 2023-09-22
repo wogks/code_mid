@@ -1,5 +1,6 @@
 import 'package:codefac_mid/common/const/colors.dart';
 import 'package:codefac_mid/common/layout/default_layout.dart';
+import 'package:codefac_mid/restaurant/view/restaurant_screen.dart';
 import 'package:flutter/material.dart';
 
 class RootTab extends StatefulWidget {
@@ -61,11 +62,7 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
         physics: const NeverScrollableScrollPhysics(),
         controller: controller,
         children: [
-          Center(
-            child: Container(
-              child: const Text('1'),
-            ),
-          ),
+          const RestaurantScreen(),
           Center(
             child: Container(
               child: const Text('2'),
