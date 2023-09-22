@@ -5,6 +5,7 @@ import 'package:codefac_mid/common/const/data.dart';
 import 'package:codefac_mid/common/layout/default_layout.dart';
 import 'package:codefac_mid/common/view/root_tab.dart';
 import 'package:codefac_mid/user/view/login_screen.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -29,17 +30,25 @@ class _SplashScreenState extends State<SplashScreen> {
   checkToken() async {
     final refreshToken = await storage.read(key: REFRESH_TOKEN_KEY);
     final accessToken = await storage.read(key: ACCESS_TOKEN_KEY);
-
-    if (accessToken == null || refreshToken == null) {
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(
-            builder: (context) => const LoginScreen(),
-          ),
-          (route) => false);
-    } else {
+    final dio = Dio();
+    try {
+      final resp = await dio.post(
+        'http://$ip/auth/token',
+        options: Options(
+          headers: {
+            'authorization': 'Bearer $refreshToken',
+          },
+        ),
+      );
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
             builder: (context) => const RootTab(),
+          ),
+          (route) => false);
+    } catch (e) {
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+            builder: (context) => const LoginScreen(),
           ),
           (route) => false);
     }
