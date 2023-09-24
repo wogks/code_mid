@@ -14,9 +14,11 @@ class RestaurantModel {
   final RestaurantPriceRange priceRange;
   final double ratings;
   final int ratingsCount;
+  final int deliveryTime;
   final int deliveryFee;
 
   RestaurantModel({
+    required this.deliveryTime,
     required this.id,
     required this.name,
     required this.thumbUrl,
@@ -38,6 +40,7 @@ class RestaurantModel {
       ratings: json['ratings'],
       ratingsCount: json['ratingsCount'],
       deliveryFee: json['deliveryFee'],
+      deliveryTime: json['deliveryTime'],
     );
   }
 }

@@ -53,18 +53,19 @@ class RestaurantScreen extends StatelessWidget {
                     //   ratingsCount: item['ratingsCount'],
                     //   deliveryFee: item['deliveryFee'],
                     // );
-                    return RestaurantCard(
-                      image: Image.network(
-                        pItem.thumbUrl,
-                        fit: BoxFit.cover,
-                      ),
-                      name: pItem.name,
-                      tags: pItem.tags,
-                      ratingsCount: pItem.ratingsCount,
-                      deliveryTime: pItem.deliveryFee,
-                      deliveryFee: pItem.deliveryFee,
-                      ratings: pItem.ratings,
-                    );
+                    return RestaurantCard.fromModel(model: pItem);
+                    // return RestaurantCard(
+                    //   image: Image.network(
+                    //     pItem.thumbUrl,
+                    //     fit: BoxFit.cover,
+                    //   ),
+                    //   name: pItem.name,
+                    //   tags: pItem.tags,
+                    //   ratingsCount: pItem.ratingsCount,
+                    //   deliveryTime: pItem.deliveryTime,
+                    //   deliveryFee: pItem.deliveryFee,
+                    //   ratings: pItem.ratings,
+                    // );
                   },
                   separatorBuilder: (context, index) {
                     return Container(
