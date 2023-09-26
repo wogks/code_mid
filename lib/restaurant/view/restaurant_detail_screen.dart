@@ -1,4 +1,5 @@
 import 'package:codefac_mid/common/layout/default_layout.dart';
+import 'package:codefac_mid/product/component/product_card.dart';
 import 'package:codefac_mid/restaurant/component/restaurant_card.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,11 @@ class RestaurantDetailSreen extends StatelessWidget {
             ratings: 4.3,
             isDetail: true,
             detail: '맛있는 덕볶이',
-          )
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: ProductCard(),
+          ),
         ],
       ),
     );
