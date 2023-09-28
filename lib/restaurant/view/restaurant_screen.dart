@@ -43,7 +43,7 @@ class RestaurantScreen extends StatelessWidget {
                 return ListView.separated(
                   itemBuilder: (context, index) {
                     final item = snapshot.data![index];
-                    final pItem = RestaurantModel.fromJson(json: item);
+                    final pItem = RestaurantModel.fromJson(item);
                     // final pItem = RestaurantModel(
                     //   id: item['id'],
                     //   name: item['name'],
